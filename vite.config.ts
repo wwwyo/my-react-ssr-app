@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     ssr: true,
     rollupOptions: {
-      input: './server/index.ts',
+      input: './server/index.tsx',
     },
   },
 })
