@@ -5,25 +5,25 @@ import React from 'react';
 
 const app = express();
 
-app.use('/static', express.static('dist'));
+app.use('/dist', express.static('dist'));
 
-app.get(/.*/, (req, res) => {
+app.get('/', (req, res) => {
   const appHtml = renderToString(<App />)
-
   const html = `
-  <!DOCTYPE html>
-  <html lang="en">
+  <!doctype html>
+<html lang="en">
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
   </head>
   <body>
-  <div id="app">${appHtml}</div>
-  <script src="/static/client.js"></script>
+    <div id="root">${appHtml}</div>
+    <script type="module" src="/dist/assets/client-CQh0FRdv.js"></script>
   </body>
-  </html>
-  `
+</html>
+`
 
   res.send(html);
 })
